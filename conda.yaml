@@ -10,5 +10,6 @@ dependencies:
   - pip
   - matplotlib
   - python
+  - azureml
   - pip:
     - mlflow
