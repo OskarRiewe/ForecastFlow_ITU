@@ -1,0 +1,14 @@
+name: osri_energy_forecast
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - scikit-learn
+  - xgboost
+  - cloudpickle
+  - pip
+  - matplotlib
+  - python
+  - pip:
+    - mlflow

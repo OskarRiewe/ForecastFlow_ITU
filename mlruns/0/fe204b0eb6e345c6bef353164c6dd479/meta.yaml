@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/oskar/Desktop/KU/Semester%20III/BigData/Assignment%20III/ForecastFlow/mlruns/0/fe204b0eb6e345c6bef353164c6dd479/artifacts
+end_time: 1669554244916
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: fe204b0eb6e345c6bef353164c6dd479
+run_uuid: fe204b0eb6e345c6bef353164c6dd479
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1669554242413
+status: 4
+tags: []
+user_id: oskar
