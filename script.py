@@ -2,14 +2,17 @@ import pandas as pd
 import mlflow
 import os
 import datetime
+from azureml.core import Workspace
 
+ws = Workspace.from_config()
+mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
 # mlflow.set_tracking_uri("http://training.itu.dk:5000/")
 # mlflow.set_tracking_uri("http://localhost:5000/")
 # mlflow.set_tracking_uri("http://127.0.0.1:5000/")
 print("STARTING\n")
-mlflow.set_tracking_uri("mlruns")
+# mlflow.set_tracking_uri("mlruns")
 print("SETTING EXPERIMENT\n")
 # Set the experiment name
 mlflow.set_experiment("osri_energy_forecast")
