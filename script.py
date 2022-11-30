@@ -138,7 +138,7 @@ for train, test in TimeSeriesSplit(number_of_splits).split(X,y):
     plt.plot(truth.index, truth.values, label="Truth")
     plt.plot(truth.index, predictions, label="Predictions")
     plt.savefig('figpath.png')
-    plt.show()
+    plt.close()
 
     mlflow.log_artifact('figpath.png', "PredictionsGraph")
 
