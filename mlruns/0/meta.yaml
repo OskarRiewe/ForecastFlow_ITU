@@ -1,4 +1,6 @@
-artifact_location: file:///Users/oskar/Desktop/KU/Semester%20III/BigData/Assignment%20III/ForecastFlow/mlruns/0
+artifact_location: mlflow-artifacts:/0
+creation_time: 1669818695100
 experiment_id: '0'
+last_update_time: 1669818695100
 lifecycle_stage: active
 name: Default
