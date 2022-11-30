@@ -121,6 +121,7 @@ metrics = [
         ("R2", r2_score, [])
     ]
 
+ITR = 0
 for train, test in TimeSeriesSplit(number_of_splits).split(X,y):
     X_train = SpeedShift(x=X.iloc[train])
     X_train = Interpolate(x=X_train)
@@ -134,30 +135,31 @@ for train, test in TimeSeriesSplit(number_of_splits).split(X,y):
     predictions = regression_xgb.predict(X_test)
     truth = y_test
     
+    print("CREATE PLOT")
     from matplotlib import pyplot as plt 
     plt.plot(truth.index, truth.values, label="Truth")
     plt.plot(truth.index, predictions, label="Predictions")
     plt.savefig('figpath.png')
     plt.close()
-
+    print("LOG PLOT AS ARTIFACT")
     mlflow.log_artifact('figpath.png', "PredictionsGraph")
 
-
+    print("CALCULATE METRICS")
     # Calculate and save the metrics for this fold
     for name, func, scores in metrics:
         score = func(truth, predictions)
         scores.append(score)
         
-
+    print("LOG METRICS")
     # Log a summary of the metrics
     for name, _, scores in metrics:
             # NOTE: Here we just log the mean of the scores. 
             # Are there other summarizations that could be interesting?
             mean_score = sum(scores)/number_of_splits
             mlflow.log_metric(f"mean_{name}", mean_score)
-
-    mlflow.sklearn.log_model(regression_xgb, 'XGBoost_PowerProduction')
-
+    print("LOG MODEL")
+    mlflow.sklearn.log_model(regression_xgb, f'XGBoost_PowerProduction_{ITR}')
+    ITR += 1
 
 # mlflow.pyfunc.save_model("model", python_model=regression_xgb, conda_env="conda.yaml")
 
